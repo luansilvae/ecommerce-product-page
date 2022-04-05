@@ -31,11 +31,21 @@ export const Header: React.FC = () => {
     <Container>
       <HeaderWrapper>
         <LeftContent>
-          <MenuButton onClick={handleToggleMenu}>
+          <MenuButton
+            type="button"
+            aria-label="Menu Button"
+            onClick={handleToggleMenu}
+            tabIndex={0}
+          >
             <img src="icon-menu.svg" alt="Menu icon" />
           </MenuButton>
 
-          <Logo href="#" aria-label="Logo Sneakers" title="Logo Sneakers">
+          <Logo
+            href="#"
+            tabIndex={0}
+            aria-label="Logo Sneakers"
+            title="Logo Sneakers"
+          >
             <img src="logo.svg" alt="Logo Sneakers" />
           </Logo>
 
@@ -62,9 +72,15 @@ export const Header: React.FC = () => {
           active={menuActive}
           id="mobile-menu"
           onClick={handleOutsideClick}
+          tabIndex={0}
         >
           <MenuContent>
-            <CloseMenu onClick={handleToggleMenu}>
+            <CloseMenu
+              type="button"
+              aria-label="Close Button"
+              onClick={handleToggleMenu}
+              tabIndex={0}
+            >
               <img src="icon-close.svg" alt="Close icon" />
             </CloseMenu>
 
@@ -89,10 +105,10 @@ export const Header: React.FC = () => {
         </MobileMenu>
 
         <RightContent>
-          <CartButton aria-label="Cart Button" title="Cart Button">
+          <CartButton tabIndex={0} type="button" aria-label="Cart Button">
             <img src="icon-cart.svg" alt="Cart icon" />
           </CartButton>
-          <Avatar aria-label="User Avatar button" title="User Avatar">
+          <Avatar tabIndex={0} type="button" aria-label="User Avatar button">
             <img src="image-avatar.png" alt="User avatar image" />
           </Avatar>
         </RightContent>

@@ -9,6 +9,9 @@ const tablet = 'min-width: 768px'
 const buttonStyle = css`
   display: flex;
   align-items: stretch;
+  cursor: pointer;
+  background: transparent;
+  border: none;
 `
 
 export const Container = styled.header`
@@ -52,7 +55,7 @@ export const LeftContent = styled.div`
   }
 `
 
-export const MenuButton = styled.div`
+export const MenuButton = styled.button`
   ${buttonStyle}
   cursor: pointer;
 
@@ -67,9 +70,13 @@ export const RightContent = styled.div`
   display: flex;
   align-items: center;
   column-gap: 20px;
+
+  @media (${tablet}) {
+    column-gap: 40px;
+  }
 `
 
-export const CartButton = styled.div`
+export const CartButton = styled.button`
   ${buttonStyle}
   cursor: pointer;
 `
@@ -77,8 +84,6 @@ export const CartButton = styled.div`
 export const Avatar = styled.button`
   ${buttonStyle}
 
-  cursor: pointer;
-  background: transparent;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -196,13 +201,10 @@ export const MenuContent = styled.div`
 
 export const CloseMenu = styled.button`
   ${buttonStyle}
-  cursor: pointer;
-  background: transparent;
-  border: none;
   margin-bottom: 40px;
 `
 
-export const MenuList = styled.div`
+export const MenuList = styled.ul`
   list-style: none;
 
   a {
