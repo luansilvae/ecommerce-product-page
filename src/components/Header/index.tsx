@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
             onClick={handleToggleMenu}
             tabIndex={0}
           >
-            <img src="icon-menu.svg" alt="Menu icon" />
+            <img src="images/icon-menu.svg" alt="Menu icon" />
           </MenuButton>
 
           <Logo
@@ -46,7 +46,7 @@ export const Header: React.FC = () => {
             aria-label="Logo Sneakers"
             title="Logo Sneakers"
           >
-            <img src="logo.svg" alt="Logo Sneakers" />
+            <img src="images/logo.svg" alt="Logo Sneakers" />
           </Logo>
 
           <DesktopMenu>
@@ -81,7 +81,7 @@ export const Header: React.FC = () => {
               onClick={handleToggleMenu}
               tabIndex={0}
             >
-              <img src="icon-close.svg" alt="Close icon" />
+              <img src="images/icon-close.svg" alt="Close icon" />
             </CloseMenu>
 
             <MenuList>
@@ -106,10 +106,10 @@ export const Header: React.FC = () => {
 
         <RightContent>
           <CartButton tabIndex={0} type="button" aria-label="Cart Button">
-            <img src="icon-cart.svg" alt="Cart icon" />
+            <img src="images/icon-cart.svg" alt="Cart icon" />
           </CartButton>
           <Avatar tabIndex={0} type="button" aria-label="User Avatar button">
-            <img src="image-avatar.png" alt="User avatar image" />
+            <img src="images/image-avatar.png" alt="User avatar image" />
           </Avatar>
         </RightContent>
       </HeaderWrapper>

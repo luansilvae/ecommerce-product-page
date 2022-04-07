@@ -16,17 +16,17 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 :root {
-  --primary: hsl(26, 100%, 55%);
-  --primary-light: hsl(25, 100%, 94%);
+  --primary: #FF7D1A;
+  --primary-light: #FFEDE0;
 
-  --blue-light: hsl(223, 64%, 98%);
-  --blue: hsl(220, 14%, 75%);
-  --blue-dark: hsl(219, 9%, 45%);
-  --blue-darkest:  hsl(220, 13%, 13%);
+  --blue-light: #F7F8FD;
+  --blue: #B6BCC8;
+  --blue-dark: #68707D;
+  --blue-darkest: #2A2E37;
 
-  --border: #e8e8ea;
-  --white: hsl(0, 0%, 100%);
-  --black: hsl(0, 0%, 0%);
+  --border: #E8E8EA;
+  --white:	#FFFFFF;
+  --black: #000000;
 }
 
 html {
