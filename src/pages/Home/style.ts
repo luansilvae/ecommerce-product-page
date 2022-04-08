@@ -134,7 +134,7 @@ export const CartControls = styled.div`
   }
 `
 
-export const Button = styled.div`
+export const Button = styled.button`
   ${buttonStyle}
   padding: 15px;
   background-color: var(--primary);

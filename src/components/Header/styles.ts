@@ -18,6 +18,11 @@ export const Container = styled.header`
   background-color: var(--white);
   padding: 0 20px;
   height: 68px;
+  position: relative;
+
+  @media (${tablet}) {
+    position: unset;
+  }
 
   display: flex;
   align-items: center;
@@ -41,6 +46,7 @@ export const HeaderWrapper = styled.div`
 
   @media (${tablet}) {
     border-bottom: 1px solid var(--border);
+    position: relative;
   }
 `
 

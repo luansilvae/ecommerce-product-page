@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import Cart from '../Cart'
 
 import {
   Container,
@@ -18,6 +19,7 @@ import {
 
 export const Header: React.FC = () => {
   const [menuActive, setMenuActive] = useState<boolean>(false)
+  const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
 
   const handleToggleMenu = useCallback(() => {
     setMenuActive(state => !state)
@@ -26,6 +28,8 @@ export const Header: React.FC = () => {
   const handleOutsideClick = useCallback((event: any) => {
     if (event.target.id === 'mobile-menu') setMenuActive(false)
   }, [])
+
+  const handleCartOpen = useCallback(() => setIsCartOpen(state => !state), [])
 
   return (
     <Container>
@@ -105,9 +109,17 @@ export const Header: React.FC = () => {
         </MobileMenu>
 
         <RightContent>
-          <CartButton tabIndex={0} type="button" aria-label="Cart Button">
+          <CartButton
+            tabIndex={0}
+            type="button"
+            aria-label="Cart Button"
+            onClick={handleCartOpen}
+          >
             <img src="images/icon-cart.svg" alt="Cart icon" />
           </CartButton>
+
+          <Cart isCartOpen={isCartOpen} />
+
           <Avatar tabIndex={0} type="button" aria-label="User Avatar button">
             <img src="images/image-avatar.png" alt="User avatar image" />
           </Avatar>
