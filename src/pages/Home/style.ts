@@ -10,6 +10,7 @@ const buttonStyle = css`
 `
 
 const tablet = 'min-width: 768px'
+const desktop = 'min-width: 1024px'
 
 export const Main = styled.main`
   max-width: 1200px;
@@ -50,6 +51,13 @@ export const ProductInfo = styled.div`
     font-size: 26px;
     margin: 15px 0;
     line-height: 1.1;
+
+    @media (${tablet}) {
+      font-size: 32px;
+    }
+    @media (${desktop}) {
+      font-size: 46px;
+    }
   }
 
   p {
