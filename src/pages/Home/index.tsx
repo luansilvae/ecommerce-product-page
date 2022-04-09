@@ -15,6 +15,8 @@ import {
 import { sneaker, SneakerType } from '../../data/sneaker'
 import { useCart } from '../../hooks/useCart'
 import { useProducts } from '../../hooks/useProducts'
+import { CartIcon, MinusIcon, PlusIcon } from '../../components/Icons'
+import { formattedCurrency } from '../../utils/formattedCurrency'
 
 export const Home: React.FC = () => {
   const { handleAddToCart, cart, handleRemoveFromCart } = useCart()
@@ -49,11 +51,11 @@ export const Home: React.FC = () => {
 
         <Price>
           <ActualPrice>
-            <strong>${product.price.actualPrice}.00</strong>
+            <strong> {formattedCurrency(product.price.actualPrice)}</strong>
             <span>{product.price.discount}%</span>
           </ActualPrice>
 
-          <OldPrice>${product.price.oldPrice}.00</OldPrice>
+          <OldPrice>{formattedCurrency(product.price.oldPrice)}</OldPrice>
         </Price>
 
         <CartActions>
@@ -63,15 +65,11 @@ export const Home: React.FC = () => {
               disabled={product.amount === 0}
               onClick={() => handleRemoveFromCart(product.id)}
             >
-              <img src="images/icon-minus.svg" alt="Remove product from cart" />
+              <MinusIcon aria-label="Remove product from cart" />
             </button>
             <span>{product.amount}</span>
-            <button
-              type="button"
-              disabled={product.amount === 0}
-              onClick={() => handleAddToCart(product.id)}
-            >
-              <img src="images/icon-plus.svg" alt="Add product from cart" />
+            <button type="button" onClick={() => handleAddToCart(product.id)}>
+              <PlusIcon aria-label="Add product to cart" />
             </button>
           </CartControls>
           <Button
@@ -79,7 +77,7 @@ export const Home: React.FC = () => {
             onClick={() => handleAddToCart(product.id)}
             disabled={product.amount > 0}
           >
-            Add to cart
+            <CartIcon /> Add to cart
           </Button>
         </CartActions>
       </ProductInfo>

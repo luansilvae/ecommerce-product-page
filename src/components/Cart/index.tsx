@@ -10,6 +10,8 @@ import {
 
 import { Button } from '../../pages/Home/style'
 import { useCart } from '../../hooks/useCart'
+import { DeleteIcon } from '../Icons'
+import { formattedCurrency } from '../../utils/formattedCurrency'
 
 const Cart: React.FC<{ isCartOpen: boolean }> = ({ isCartOpen }) => {
   const { cart, isCartEmpty, handleRemoveFromCart } = useCart()
@@ -32,9 +34,12 @@ const Cart: React.FC<{ isCartOpen: boolean }> = ({ isCartOpen }) => {
                 <div className="productInfo">
                   <h4>{product.name}</h4>
                   <span>
-                    {product.price.actualPrice} x {product.amount}{' '}
+                    {formattedCurrency(product.price.actualPrice)} x {''}
+                    {product.amount}
                     <strong>
-                      ${product.price.actualPrice * product.amount}
+                      {formattedCurrency(
+                        product.price.actualPrice * product.amount
+                      )}
                     </strong>
                   </span>
                 </div>
@@ -43,10 +48,7 @@ const Cart: React.FC<{ isCartOpen: boolean }> = ({ isCartOpen }) => {
                   type="button"
                   onClick={() => handleRemoveFromCart(product.id)}
                 >
-                  <img
-                    src="images/icon-delete.svg"
-                    alt="Remove item from cart"
-                  />
+                  <DeleteIcon />
                 </button>
               </li>
             ))}

@@ -85,8 +85,11 @@ export const RightContent = styled.div`
 export const CartButton = styled.button`
   ${buttonStyle}
   cursor: pointer;
-
   position: relative;
+
+  > svg path {
+    fill: var(--blue-darkest);
+  }
 
   > span {
     background-color: var(--primary);

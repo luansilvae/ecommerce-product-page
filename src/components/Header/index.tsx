@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useCart } from '../../hooks/useCart'
 import Cart from '../Cart'
+import { CartIcon, CloseIcon, LogoIcon, MenuIcon } from '../Icons'
 
 import {
   Container,
@@ -43,7 +44,7 @@ export const Header: React.FC = () => {
             onClick={handleToggleMenu}
             tabIndex={0}
           >
-            <img src="images/icon-menu.svg" alt="Menu icon" />
+            <MenuIcon />
           </MenuButton>
 
           <Logo
@@ -52,7 +53,7 @@ export const Header: React.FC = () => {
             aria-label="Logo Sneakers"
             title="Logo Sneakers"
           >
-            <img src="images/logo.svg" alt="Logo Sneakers" />
+            <LogoIcon />
           </Logo>
 
           <DesktopMenu>
@@ -87,7 +88,7 @@ export const Header: React.FC = () => {
               onClick={handleToggleMenu}
               tabIndex={0}
             >
-              <img src="images/icon-close.svg" alt="Close icon" />
+              <CloseIcon />
             </CloseMenu>
 
             <MenuList>
@@ -117,8 +118,7 @@ export const Header: React.FC = () => {
             aria-label="Cart Button"
             onClick={handleCartOpen}
           >
-            <img src="images/icon-cart.svg" alt="Cart icon" />
-
+            <CartIcon />
             {totalProducts > 0 && <span>{totalProducts}</span>}
           </CartButton>
 

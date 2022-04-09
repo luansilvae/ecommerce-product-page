@@ -135,6 +135,7 @@ export const CartList = styled.ul`
       }
 
       strong {
+        margin-left: 10px;
         color: var(--blue-darkest);
       }
     }

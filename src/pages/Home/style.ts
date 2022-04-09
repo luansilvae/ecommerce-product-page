@@ -120,8 +120,9 @@ export const CartControls = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 17px;
+  height: 54px;
   border-radius: 10px;
+  padding: 0 10px;
 
   span {
     color: var(--blue-darkest);
@@ -131,8 +132,12 @@ export const CartControls = styled.div`
 
   > button {
     ${buttonStyle}
+    padding: 10px;
 
     :disabled {
+      svg {
+        opacity: 0.7;
+      }
       cursor: not-allowed;
     }
   }
@@ -140,13 +145,18 @@ export const CartControls = styled.div`
 
 export const Button = styled.button`
   ${buttonStyle}
-  padding: 17px;
   background-color: var(--primary);
   color: var(--white);
   font-weight: 700;
   border-radius: 10px;
+  height: 54px;
   width: 100%;
   font-size: 16px;
+  gap: 10px;
+
+  svg path {
+    fill: var(--white);
+  }
 
   :disabled {
     cursor: not-allowed;
