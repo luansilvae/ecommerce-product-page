@@ -131,6 +131,10 @@ export const CartControls = styled.div`
 
   > button {
     ${buttonStyle}
+
+    :disabled {
+      cursor: not-allowed;
+    }
   }
 `
 
@@ -142,4 +146,9 @@ export const Button = styled.button`
   font-weight: 700;
   border-radius: 10px;
   width: 100%;
+
+  :disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
 `

@@ -1,4 +1,19 @@
+export type SneakerType = {
+  id: number
+  name: string
+  brand: string
+  description: string
+  images: string[]
+  price: {
+    actualPrice: number
+    oldPrice: number
+    discount: number
+  }
+  amount: number
+}
+
 export const sneaker = {
+  id: 1,
   name: 'Fall Limited Edition Sneakers',
   brand: 'Sneaker Company',
   description:
@@ -10,10 +25,11 @@ export const sneaker = {
     'images/image-product-4.jpg'
   ],
   price: {
-    actual_price: 125,
-    old_price: 250,
+    actualPrice: 125,
+    oldPrice: 250,
     discount: 50
-  }
+  },
+  amount: 0
 }
 
 export type SneakerProps = typeof sneaker

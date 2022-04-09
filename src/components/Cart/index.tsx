@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import {
   Container,
@@ -8,11 +8,11 @@ import {
   CartList
 } from './styles'
 
-import { sneaker, SneakerProps } from '../../data/sneaker'
 import { Button } from '../../pages/Home/style'
+import { useCart } from '../../hooks/useCart'
 
 const Cart: React.FC<{ isCartOpen: boolean }> = ({ isCartOpen }) => {
-  const [product] = useState<SneakerProps>(sneaker)
+  const { cart, isCartEmpty, handleRemoveFromCart } = useCart()
 
   return (
     <Container isCartOpen={isCartOpen}>
@@ -20,30 +20,41 @@ const Cart: React.FC<{ isCartOpen: boolean }> = ({ isCartOpen }) => {
         <h3>Cart</h3>
       </CartHeader>
 
-      {/* <EmptyCart>Your cart is empty.</EmptyCart> */}
+      {isCartEmpty ? (
+        <EmptyCart>Your cart is empty.</EmptyCart>
+      ) : (
+        <CartContent>
+          <CartList>
+            {cart.map((product, index) => (
+              <li key={index}>
+                <img src={product.images[0]} alt={product.name} />
 
-      <CartContent>
-        <CartList>
-          <li>
-            <img src={product.images[1]} alt={product.name} />
+                <div className="productInfo">
+                  <h4>{product.name}</h4>
+                  <span>
+                    {product.price.actualPrice} x {product.amount}{' '}
+                    <strong>
+                      ${product.price.actualPrice * product.amount}
+                    </strong>
+                  </span>
+                </div>
 
-            <div className="productInfo">
-              <h4>
-                {product.name} dawdq wdqwd qw dqw qw qw qw qwqw qwd qwd qw d
-              </h4>
-              <span>
-                {product.price.actual_price} x 3 <strong>$375.00</strong>
-              </span>
-            </div>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveFromCart(product.id)}
+                >
+                  <img
+                    src="images/icon-delete.svg"
+                    alt="Remove item from cart"
+                  />
+                </button>
+              </li>
+            ))}
+          </CartList>
 
-            <button type="button">
-              <img src="images/icon-delete.svg" alt="Remove item from cart" />
-            </button>
-          </li>
-        </CartList>
-
-        <Button>Checkout</Button>
-      </CartContent>
+          <Button>Checkout</Button>
+        </CartContent>
+      )}
     </Container>
   )
 }

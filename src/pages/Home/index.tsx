@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Gallery from '../../components/Gallery'
 
 import {
@@ -11,10 +11,33 @@ import {
   CartControls,
   Button
 } from './style'
-import { sneaker, SneakerProps } from '../../data/sneaker'
+
+import { sneaker, SneakerType } from '../../data/sneaker'
+import { useCart } from '../../hooks/useCart'
+import { useProducts } from '../../hooks/useProducts'
 
 export const Home: React.FC = () => {
-  const [product] = useState<SneakerProps>(sneaker)
+  const { handleAddToCart, cart, handleRemoveFromCart } = useCart()
+  const { sneakers } = useProducts()
+
+  const selectedProduct = useMemo(
+    () => sneakers.find(item => item.id === sneaker.id),
+    [sneakers]
+  )
+
+  const [product, setProduct] = useState<SneakerType>(() => {
+    return selectedProduct as SneakerType
+  })
+
+  useEffect(() => {
+    const productInCart = cart.find(item => item.id === product.id)
+
+    if (productInCart) {
+      setProduct(productInCart)
+    } else {
+      setProduct(selectedProduct as SneakerType)
+    }
+  }, [cart, product.id, selectedProduct])
 
   return (
     <Main>
@@ -26,24 +49,38 @@ export const Home: React.FC = () => {
 
         <Price>
           <ActualPrice>
-            <strong>${product.price.actual_price}.00</strong>
+            <strong>${product.price.actualPrice}.00</strong>
             <span>{product.price.discount}%</span>
           </ActualPrice>
 
-          <OldPrice>${product.price.old_price}.00</OldPrice>
+          <OldPrice>${product.price.oldPrice}.00</OldPrice>
         </Price>
 
         <CartActions>
           <CartControls>
-            <button>
+            <button
+              type="button"
+              disabled={product.amount === 0}
+              onClick={() => handleRemoveFromCart(product.id)}
+            >
               <img src="images/icon-minus.svg" alt="Remove product from cart" />
             </button>
-            <span>4</span>
-            <button>
+            <span>{product.amount}</span>
+            <button
+              type="button"
+              disabled={product.amount === 0}
+              onClick={() => handleAddToCart(product.id)}
+            >
               <img src="images/icon-plus.svg" alt="Add product from cart" />
             </button>
           </CartControls>
-          <Button>Add to cart</Button>
+          <Button
+            type="button"
+            onClick={() => handleAddToCart(product.id)}
+            disabled={product.amount > 0}
+          >
+            Add to cart
+          </Button>
         </CartActions>
       </ProductInfo>
     </Main>

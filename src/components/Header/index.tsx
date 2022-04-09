@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react'
+import { useCart } from '../../hooks/useCart'
 import Cart from '../Cart'
 
 import {
@@ -20,6 +21,7 @@ import {
 export const Header: React.FC = () => {
   const [menuActive, setMenuActive] = useState<boolean>(false)
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false)
+  const { totalProducts } = useCart()
 
   const handleToggleMenu = useCallback(() => {
     setMenuActive(state => !state)
@@ -116,6 +118,8 @@ export const Header: React.FC = () => {
             onClick={handleCartOpen}
           >
             <img src="images/icon-cart.svg" alt="Cart icon" />
+
+            {totalProducts > 0 && <span>{totalProducts}</span>}
           </CartButton>
 
           <Cart isCartOpen={isCartOpen} />

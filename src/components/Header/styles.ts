@@ -85,6 +85,27 @@ export const RightContent = styled.div`
 export const CartButton = styled.button`
   ${buttonStyle}
   cursor: pointer;
+
+  position: relative;
+
+  > span {
+    background-color: var(--primary);
+    color: var(--white);
+    font-weight: 700;
+    position: absolute;
+    z-index: 20;
+    font-size: 12px;
+    top: -9px;
+    right: -8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 16px;
+    border-radius: 10px;
+  }
 `
 
 export const Avatar = styled.button`
