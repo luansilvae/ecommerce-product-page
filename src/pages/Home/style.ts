@@ -120,13 +120,13 @@ export const CartControls = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 17px;
   border-radius: 10px;
 
   span {
     color: var(--blue-darkest);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   > button {
@@ -140,12 +140,13 @@ export const CartControls = styled.div`
 
 export const Button = styled.button`
   ${buttonStyle}
-  padding: 15px;
+  padding: 17px;
   background-color: var(--primary);
   color: var(--white);
   font-weight: 700;
   border-radius: 10px;
   width: 100%;
+  font-size: 16px;
 
   :disabled {
     cursor: not-allowed;

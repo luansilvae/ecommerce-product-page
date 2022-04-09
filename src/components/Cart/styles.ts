@@ -122,7 +122,7 @@ export const CartList = styled.ul`
       h4,
       span,
       strong {
-        font-size: 14px;
+        font-size: 16px;
         color: var(--blue-dark);
       }
 
