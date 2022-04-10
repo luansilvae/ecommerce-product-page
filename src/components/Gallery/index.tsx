@@ -10,12 +10,15 @@ import 'swiper/css/thumbs'
 import 'swiper/css/free-mode'
 
 import { sneaker } from '../../data/sneaker'
+import { useModal } from '../../hooks/useModal'
 
 const Gallery: React.FC = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
+  const { openModal, isModalOpen } = useModal()
+
   return (
-    <Container>
+    <Container modalPreview={isModalOpen}>
       <Swiper
         modules={[Navigation, Thumbs, FreeMode]}
         className="sneakerSlide"
@@ -23,6 +26,12 @@ const Gallery: React.FC = () => {
         navigation
         loop
         thumbs={{ swiper: thumbsSwiper }}
+        onClick={(swiper: any) => {
+          if (!isModalOpen) {
+            setThumbsSwiper(swiper)
+            openModal()
+          }
+        }}
       >
         {sneaker.images.map((image, index) => (
           <SwiperSlide key={index} className="itemSlide">
