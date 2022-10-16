@@ -73,6 +73,7 @@ export const Price = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
+  flex-wrap: wrap;
 `
 
 export const ActualPrice = styled.div`
@@ -99,6 +100,8 @@ export const OldPrice = styled.span`
   opacity: 0.6;
   text-decoration: line-through;
   font-weight: 700;
+  width: 100%;
+  margin-top: 10px;
 `
 
 export const CartActions = styled.div`
